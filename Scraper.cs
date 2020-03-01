@@ -13,7 +13,7 @@ namespace NhlDownload
         public static int LeagueIDPrevious { get; set; }
         public static int LeagueYearPrevious { get; set; }
 
-        public static int numberOfDraftRounds = -1;
+        public static int numberOfDraftRounds;
 
         public static List<Player> players = new List<Player>();
 
@@ -31,31 +31,6 @@ namespace NhlDownload
         {
             Skater,
             Goalie
-        }
-
-        enum PlayerTableColumnInfo
-        {
-            WatchList,
-            Player,
-            AddDropTrade,
-            Opponent,
-            Owner,
-            GamesPlayed,
-            FanPoints, // Only exists in points leagues
-            OwnedPercentage, // In points leagues, this stat appears between the current rank and time on ice stat
-            PreSeasonRanking,
-            CurrentRanking,
-            TimeOnIce,
-            Stat1,
-            Stat2,
-            Stat3,
-            Stat4,
-            Stat5,
-            Stat6,
-            Stat7,
-            Stat8,
-            Stat9,
-            Stat10
         }
 
         // URLs to be formatted, with the 1st parameter being the appropriate League ID, and the 2nd parameter the previous year.

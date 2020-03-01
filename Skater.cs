@@ -8,31 +8,8 @@ namespace NhlDownload
 {
     class Skater : Player
     {
-        // Currently unused
-        public enum StatCategory
-        {
-            Goals,
-            Assists,
-            Points,
-            PlusMinus,
-            PenaltyMinutes,
-            PowerplayGoals,
-            PowerplayAssists,
-            PowerplayPoints,
-            ShorthandedGoals,
-            ShorthandedAssists,
-            ShorthandedPoints,
-            GameWinningGoals,
-            ShotsOnGoal,
-            ShootingPercentage,
-            FaceoffsWon,
-            FaceoffsLost,
-            Hits,
-            Blocks
-        }
-
         public const string KEY_NAME_TEAM_POSITION = "Forwards/Defensemen";
-        public const string KEY_AVERAGE_TIME_ON_ICE = "TOI/G*"; // The astrisk denotes a non-scoring stat.
+        public const string KEY_AVERAGE_TIME_ON_ICE = "TOI/G*"; // Yahoo! marks categories with an astrisk if they aren't used as a scoring category.
 
         public const string KEY_GOALS = "G";
         public const string KEY_ASSISTS = "A";
@@ -74,10 +51,12 @@ namespace NhlDownload
 
         public new void SetStatByHeader(string header, string value)
         {
+            value = value == "-" ? "0" : value;
+
             switch (header)
             {
                 case KEY_AVERAGE_TIME_ON_ICE:
-                    if (value.Equals("-"))
+                    if (value.Equals("0"))
                         StatTimeOnIce = "00:00";
                     else
                         StatTimeOnIce = value;

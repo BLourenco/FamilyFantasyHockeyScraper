@@ -40,6 +40,8 @@ public class Player
 
     public void SetStatByHeader(string header, string value)
     {
+        value = value == "-" ? "0" : value;
+
         switch (header)
         {
             case KEY_OWNER:
